@@ -202,3 +202,33 @@ footer {
 .card-content {
     padding: 15px;
 }
+.register-section {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .register-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .register-section input, .register-section button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .register-section button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-section button:hover {
+    background-color: #0056b3;
+  }
+  

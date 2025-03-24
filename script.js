@@ -27,3 +27,9 @@ const countdownFunc = setInterval(() => {
         document.getElementById("timer").innerText = "Event Started!";
     }
 }, 1000);
+document.getElementById("registrationForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    document.getElementById("successMsg").style.display = "block";
+    this.reset();  // Clear form after submission
+  });
+  
