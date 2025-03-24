@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Schedule</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .tab-btn.active {
+            background: #0056b3;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Event Schedule</h1>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('day1')">Day 1</button>
+        <button class="tab-btn" onclick="showTab('day2')">Day 2</button>
+        <button class="tab-btn" onclick="showTab('day3')">Day 3</button>
+    </div>
+
+    <div id="day1" class="tab-content active">
+        <h2>March 25</h2>
+        <ul>
+            <li>10:00 AM - Opening Ceremony</li>
+            <li>11:30 AM - Coding Competition</li>
+            <li>02:00 PM - Debate Round 1</li>
+        </ul>
+    </div>
+
+    <div id="day2" class="tab-content">
+        <h2>March 26</h2>
+        <ul>
+            <li>09:00 AM - Hackathon Begins</li>
+            <li>12:00 PM - Art Exhibition</li>
+            <li>03:00 PM - Debate Finals</li>
+        </ul>
+    </div>
+
+    <div id="day3" class="tab-content">
+        <h2>March 27</h2>
+        <ul>
+            <li>10:00 AM - Hackathon Ends</li>
+            <li>12:00 PM - Awards Ceremony</li>
+            <li>01:30 PM - Closing Remarks</li>
+        </ul>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            contents.forEach(c => c.classList.remove('active'));
+            buttons.forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
