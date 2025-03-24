@@ -231,4 +231,37 @@ footer {
   .register-section button:hover {
     background-color: #0056b3;
   }
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .event-card {
+      width: 90%;
+      margin: 10px auto;
+    }
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+    
+  /* Sticky Navbar */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff; /* or use var(--background-color) if using CSS variables */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  nav.scrolled {
+    background-color: #f9f9f9; /* slightly different for effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
   
