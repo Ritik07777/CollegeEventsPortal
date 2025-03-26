@@ -1,89 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Schedule</title>
+    <title>Event Registration & Countdown</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script> <!-- Reference to the external JS file -->
     <style>
-        .tabs {
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        .navbar {
+            background-color: #fff;
+            transition: background-color 0.3s ease;
+            position: sticky;
+            top: 0;
+            padding: 10px;
+        }
+
+        .navbar.scrolled {
+            background-color: #007bff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Countdown Timer Styles */
+        #timer {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            margin-top: 30px;
+            border-radius: 8px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .countdown {
+            text-align: center;
+            font-size: 24px;
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            gap: 20px;
+            font-weight: bold;
         }
-        .tab-btn {
+
+        .countdown span {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Dark Mode Button Styles */
+        #toggle-dark {
             padding: 10px 20px;
-            margin: 0 5px;
-            background: #007BFF;
+            background-color: #007BFF;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 20px;
         }
-        .tab-btn.active {
-            background: #0056b3;
+
+        #toggle-dark:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
         }
-        .tab-content {
+
+        /* Form Success Message Animation */
+        #successMsg {
             display: none;
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            margin-top: 10px;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
         }
-        .tab-content.active {
-            display: block;
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
+
     </style>
 </head>
 <body>
-    <header>
-        <h1>Event Schedule</h1>
-    </header>
 
-    <div class="tabs">
-        <button class="tab-btn active" onclick="showTab('day1')">Day 1</button>
-        <button class="tab-btn" onclick="showTab('day2')">Day 2</button>
-        <button class="tab-btn" onclick="showTab('day3')">Day 3</button>
+    <!-- Navbar -->
+    <nav>
+        <button id="toggle-dark">🌙 Dark Mode</button>
+    </nav>
+
+    <!-- Countdown Timer -->
+    <div id="timer">
+        <h2>Countdown to Event</h2>
+        <div class="countdown">
+            <span id="days">00</span>:
+            <span id="hours">00</span>:
+            <span id="minutes">00</span>:
+            <span id="seconds">00</span>
+        </div>
     </div>
 
-    <div id="day1" class="tab-content active">
-        <h2>March 25</h2>
-        <ul>
-            <li>10:00 AM - Opening Ceremony</li>
-            <li>11:30 AM - Coding Competition</li>
-            <li>02:00 PM - Debate Round 1</li>
-        </ul>
-    </div>
+    <!-- Registration Form -->
+    <form id="registrationForm">
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="College Name" required>
+        <select required>
+            <option value="">Select Event</option>
+            <option value="Quiz">Quiz</option>
+            <option value="Coding">Coding</option>
+            <option value="Debate">Debate</option>
+        </select>
+        <input type="email" placeholder="Email Address" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <button type="submit">Register</button>
+    </form>
 
-    <div id="day2" class="tab-content">
-        <h2>March 26</h2>
-        <ul>
-            <li>09:00 AM - Hackathon Begins</li>
-            <li>12:00 PM - Art Exhibition</li>
-            <li>03:00 PM - Debate Finals</li>
-        </ul>
-    </div>
+    <!-- Success Message -->
+    <div id="successMsg">Registration Successful! 🎉</div>
 
-    <div id="day3" class="tab-content">
-        <h2>March 27</h2>
-        <ul>
-            <li>10:00 AM - Hackathon Ends</li>
-            <li>12:00 PM - Awards Ceremony</li>
-            <li>01:30 PM - Closing Remarks</li>
-        </ul>
-    </div>
-
-    <script>
-        function showTab(tabId) {
-            const contents = document.querySelectorAll('.tab-content');
-            const buttons = document.querySelectorAll('.tab-btn');
-            contents.forEach(c => c.classList.remove('active'));
-            buttons.forEach(b => b.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
-        }
-    </script>
 </body>
 </html>
